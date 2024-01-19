@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: test-node-app-rc
+spec:
+  replicas: 3
+  selector:
+    app: test-node-app
+  template:
+    metadata:
+      name: test-node-app
+      labels:
+        app: test-node-app
+    spec:
+      containers:
+      - name: test-node-app
+        image: wesbragagt/test-node-app # this is a publically available docker image for testing
+        ports:
+        - containerPort: 80
